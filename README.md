@@ -1,1 +1,0 @@
-# Softuni-QA-Automation-Front-End
