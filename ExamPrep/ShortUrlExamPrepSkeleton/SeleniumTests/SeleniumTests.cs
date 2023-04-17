@@ -14,7 +14,7 @@ namespace SeleniumTests
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(BaseUrl);
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);            
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);            
         }
 
         [OneTimeTearDown]

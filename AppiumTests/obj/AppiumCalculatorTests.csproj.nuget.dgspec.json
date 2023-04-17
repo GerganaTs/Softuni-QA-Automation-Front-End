@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gergana\\source\\repos\\AppiumTests\\AppiumCalculatorTests.csproj": {}
+    "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AppiumTests\\AppiumCalculatorTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gergana\\source\\repos\\AppiumTests\\AppiumCalculatorTests.csproj": {
+    "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AppiumTests\\AppiumCalculatorTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gergana\\source\\repos\\AppiumTests\\AppiumCalculatorTests.csproj",
+        "projectUniqueName": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AppiumTests\\AppiumCalculatorTests.csproj",
         "projectName": "AppiumCalculatorTests",
-        "projectPath": "C:\\Users\\Gergana\\source\\repos\\AppiumTests\\AppiumCalculatorTests.csproj",
+        "projectPath": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AppiumTests\\AppiumCalculatorTests.csproj",
         "packagesPath": "C:\\Users\\Gergana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gergana\\source\\repos\\AppiumTests\\obj\\",
+        "outputPath": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AppiumTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Gergana\\AppData\\Roaming\\NuGet\\NuGet.Config",

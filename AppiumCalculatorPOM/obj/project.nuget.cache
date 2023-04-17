@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FxY0BfEvPnjVTAcK+QXwVLcdsdrh5lCAC6/xajNW/NePI3z/0t7gOHI6oJNVEPIcDpwU91kGk40JEO4xyBcVHg==",
+  "dgSpecHash": "UJV77wh80hr4x3m5U+O7NDT+doGWKVKag5oeRXWMkn0aAiy+0MIozu2GGBGaFLJ1TiKeT/dPKa1/rNGGHVB89A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gergana\\source\\repos\\AppiumCalculatorPOM\\AppiumCalculatorPOM.csproj",
+  "projectFilePath": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AppiumCalculatorPOM\\AppiumCalculatorPOM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gergana\\.nuget\\packages\\appium.webdriver\\4.4.0\\appium.webdriver.4.4.0.nupkg.sha512",
     "C:\\Users\\Gergana\\.nuget\\packages\\castle.core\\4.3.1\\castle.core.4.3.1.nupkg.sha512",

@@ -1,9 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\3.3.Students-Registry-Selenium-POM-Tests",
     "\\3.3.Students-Registry-Selenium-POM-Tests\\PageObjects",
-    "\\3.3.Students-Registry-Selenium-POM-Tests\\Tests"
+    "\\ExamPrep",
+    "\\ExamPrep\\ShortUrlExamPrepSkeleton",
+    "\\ExamPrep\\ShortUrlExamPrepSkeleton\\AppiumDesktopTests",
+    "\\ExamPrep\\ShortUrlExamPrepSkeleton\\AppiumMobileTests",
+    "\\ExamPrep\\ShortUrlExamPrepSkeleton\\SeleniumTests"
   ],
+  "SelectedNode": "\\ExamPrep\\ShortUrlExamPrepSkeleton\\ShortUrlExamPrepSkeleton.sln",
   "PreviewInSolutionExplorer": false
 }

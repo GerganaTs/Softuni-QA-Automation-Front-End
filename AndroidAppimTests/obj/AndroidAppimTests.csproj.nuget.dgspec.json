@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gergana\\source\\repos\\AndroidAppimTests\\AndroidAppimTests.csproj": {}
+    "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AndroidAppimTests\\AndroidAppimTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gergana\\source\\repos\\AndroidAppimTests\\AndroidAppimTests.csproj": {
+    "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AndroidAppimTests\\AndroidAppimTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gergana\\source\\repos\\AndroidAppimTests\\AndroidAppimTests.csproj",
+        "projectUniqueName": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AndroidAppimTests\\AndroidAppimTests.csproj",
         "projectName": "AndroidAppimTests",
-        "projectPath": "C:\\Users\\Gergana\\source\\repos\\AndroidAppimTests\\AndroidAppimTests.csproj",
+        "projectPath": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AndroidAppimTests\\AndroidAppimTests.csproj",
         "packagesPath": "C:\\Users\\Gergana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gergana\\source\\repos\\AndroidAppimTests\\obj\\",
+        "outputPath": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AndroidAppimTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Gergana\\AppData\\Roaming\\NuGet\\NuGet.Config",

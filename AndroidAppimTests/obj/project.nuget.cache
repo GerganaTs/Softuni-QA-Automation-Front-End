@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CnHMZTOerU+/G34S196aMfNDPoP4NzrcpFtEWzm/SRZija9fRfPj6g19tyCdsFunfh4QLV2CCNuk6EOIw6o7/w==",
+  "dgSpecHash": "I9Tl8krJSb12pYONiIMEWxIxc/h9ovzu/KgEAZV/AznHjYlgCv+zy3a/ka9TI3hFLvagGvRIUfFitjb/Bq/paA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gergana\\source\\repos\\AndroidAppimTests\\AndroidAppimTests.csproj",
+  "projectFilePath": "C:\\Users\\Gergana\\source\\repos\\Softuni-QA-Automation-Front-End\\AndroidAppimTests\\AndroidAppimTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gergana\\.nuget\\packages\\appium.webdriver\\4.4.0\\appium.webdriver.4.4.0.nupkg.sha512",
     "C:\\Users\\Gergana\\.nuget\\packages\\castle.core\\4.3.1\\castle.core.4.3.1.nupkg.sha512",
