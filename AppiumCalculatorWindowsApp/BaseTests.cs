@@ -15,25 +15,15 @@ namespace AppiumCalculatorDesktopApp
         private WindowsDriver<WindowsElement> driver;
         private AppiumOptions appiumOptions;
 
-        public WindowsElement windowMaximize => driver.FindElement(By.XPath("//*[@AutomationId=\"Maximize\"]"));
-        public WindowsElement resultField => driver.FindElement(By.XPath("//*[@AutomationId=\"CalculatorResults\"]"));
-        public WindowsElement operationSum => driver.FindElement(By.XPath("//*[@AutomationId=\"plusButton\"]"));
-        public WindowsElement operationMinus => driver.FindElement(By.XPath("//*[@AutomationId=\"minusButton\"]"));
-        public WindowsElement operationMultiply => driver.FindElement(By.XPath("//*[@AutomationId=\"multiplyButton\"]"));
-        public WindowsElement operationDivide => driver.FindElement(By.XPath("//*[@AutomationId=\"divideButton\"]"));
-        public WindowsElement calcButton => driver.FindElement(By.XPath("//*[@AutomationId=\"equalButton\"]"));
-        public WindowsElement clearButton => driver.FindElement(By.XPath("//*[@AutomationId=\"clearButton\"]"));
-        public WindowsElement clearEntryButton => driver.FindElement(By.XPath("//*[@AutomationId=\"clearEntryButton\"]"));
-        public WindowsElement num1Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num1Button\"]"));
-        public WindowsElement num2Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num2Button\"]"));
-        public WindowsElement num3Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num3Button\"]"));
-        public WindowsElement num4Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num4Button\"]"));
-        public WindowsElement num5Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num5Button\"]"));
-        public WindowsElement num6Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num6Button\"]"));
-        public WindowsElement num7Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num7Button\"]"));
-        public WindowsElement num8Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num8Button\"]"));
-        public WindowsElement num9Button => driver.FindElement(By.XPath("//*[@AutomationId=\"num9Button\"]"));
-        public WindowsElement numDecimalSeparator => driver.FindElement(By.XPath("//*[@AutomationId=\"numDecimalSeparator\"]"));
+        public WindowsElement windowMaximize => driver.FindElementByAccessibilityId("Maximize");
+        public WindowsElement resultField => driver.FindElementByAccessibilityId("CalculatorResults");
+        public WindowsElement operationSum => driver.FindElementByAccessibilityId("plusButton");
+        public WindowsElement operationMinus => driver.FindElementByAccessibilityId("minusButton");
+        public WindowsElement operationMultiply => driver.FindElementByAccessibilityId("multiplyButton");
+        public WindowsElement operationDivide => driver.FindElementByAccessibilityId("divideButton");
+        public WindowsElement calcButton => driver.FindElementByAccessibilityId("equalButton");
+        public WindowsElement clearButton => driver.FindElementByAccessibilityId("clearButton");
+        public WindowsElement clearEntryButton => driver.FindElementByAccessibilityId("clearEntryButton]");
 
         [OneTimeSetUp]
         public void OpenApp()
@@ -54,7 +44,7 @@ namespace AppiumCalculatorDesktopApp
         [Test, Order(1)]
         public void Test_AppName()
         {
-            var appName = driver.FindElement(By.XPath("//*[@AutomationId=\"AppName\"]"));
+            var appName = driver.FindElementByAccessibilityId("AppName");
             Assert.That(appName.Text, Is.EqualTo("Calculator"));
         }
 

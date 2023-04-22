@@ -1,20 +1,24 @@
-using OpenQA.Selenium.Chrome;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using ExpectedConditions = OpenQA.Selenium.Support.UI.ExpectedConditions;
 
 namespace SeleniumTests
 {
     public class SeleniumTests
     {
         private WebDriver driver;
-        private const string BaseUrl = "https://shorturl-1.gerganatsirkova.repl.co";
+        private const string BaseUrl = "https://shorturl-3.gerganatsirkova.repl.co";
+        private const string ShortUrl = "https://shorturl-3.gerganatsirkova.repl.co/urls";
+        private const string AddURL = "https://shorturl-3.gerganatsirkova.repl.co/add-url";
 
         [OneTimeSetUp]
-        public void OpenBrowser()
+        public void Setup()
         {
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(BaseUrl);
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);            
         }
 
         [OneTimeTearDown]
@@ -23,81 +27,74 @@ namespace SeleniumTests
             driver.Quit();
         }
 
-        public void addNewURL(string newUrl)
+        public void addURL(string urlToAdd)
         {
-            var addURL = driver.FindElement(By.LinkText("Add URL"));
-            addURL.Click();
-            var newLinkText = "https://softuni.bg";
-            var inputURL = driver.FindElement(By.CssSelector("input.url"));
-            var createURLButton = driver.FindElement(By.CssSelector("button[type=\"submit\"]"));
-            inputURL.SendKeys(newLinkText);
-            createURLButton.Click();
-        }
-
-        public int getURLCounter()
-        {
-            driver.Navigate().GoToUrl(BaseUrl);
-            var counter = driver.FindElement(By.CssSelector("ul>li:nth-child(1) b"));
-
-            return Int32.Parse(counter.Text);
+            driver.Navigate().GoToUrl(AddURL);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var addUrlField = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("url")));
+            var addUrButton = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("button[type='submit']")));
+            addUrlField.SendKeys(urlToAdd);
+            addUrButton.Click();
         }
 
         [Test, Order(1)]
-        public void OpenShortURLPage_Test_TopLeftCell()
+        public void Test_Homepage_OriginalURL()
         {
-            var shortURLPage = driver.FindElement(By.LinkText("Short URLs"));
-            shortURLPage.Click();
-            var topLeftThElement = driver.FindElement(By.CssSelector("thead>tr>th:nth-child(1)"));
-            Assert.That(topLeftThElement.Text, Is.EqualTo("Original URL"));
+            driver.Navigate().GoToUrl(ShortUrl);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var originalURL = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("table > thead > tr > th:nth-child(1)")));
+            Assert.That(originalURL.Text, Is.EqualTo("Original URL"));
         }
 
         [Test, Order(2)]
-        public void OpenShortURLPage_Test_AddNewUrl_Valid()
+        public void Test_AddUrlPage_HappyPath()
         {
-            addNewURL("https://softuni.bg");
-            var newLinkText = "https://softuni.bg";
-            var newAddedLink = driver.FindElement(By.CssSelector("tbody > tr:last-of-type > td:nth-child(1) > a"));
-            Assert.That(newAddedLink.Text, Is.EqualTo(newLinkText));
+            var url = "https://softuni.bg";
+            addURL(url);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var lastValidUrlEntered = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("table > tbody > tr:last-child > td:first-child")));
+            Assert.That(driver.Url, Is.EqualTo(ShortUrl));
+            Assert.That(lastValidUrlEntered.Text, Is.EqualTo(url));
         }
 
         [Test, Order(3)]
-        public void OpenShortURLPage_Test_AddNewUrl_Invalid()
+        public void Test_AddUrlPage_NegativeCase()
         {
-            var addURL = driver.FindElement(By.LinkText("Add URL"));
-            addURL.Click();
-            var invalidUrlText = "Invalid URL!";
-            var inputURL = driver.FindElement(By.CssSelector("input.url"));
-            var createURLButton = driver.FindElement(By.CssSelector("button[type=\"submit\"]"));
-            inputURL.SendKeys("softuni.bg");
-            createURLButton.Click();
-            var errorMessage = driver.FindElement(By.ClassName("err"));
-            Assert.That(errorMessage.Text, Is.EqualTo(invalidUrlText));
-            Assert.True(errorMessage.Displayed);
+            var url = "softuni.bg";
+            addURL(url);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var error = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div.err")));
+            Assert.True(error.Displayed);
+            Assert.That(error.Text, Is.EqualTo("Invalid URL!"));
+            var addUrlField = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("url")));
+            addUrlField.Clear();
         }
 
         [Test, Order(4)]
-        public void OpenShortURLPage_Test_AddNewUrl_InvalidPage()
+        public void Test_AddUrlPage_NavigateToNotExistingUrl()
         {
-            driver.Navigate().GoToUrl("https://shorturl.nakov.repl.co/go/invalid536524");
-            var errorMessage = driver.FindElement(By.ClassName("err"));
-            var errorHeader = driver.FindElement(By.CssSelector("h1"));
-            var errorText = driver.FindElement(By.CssSelector("p"));
-
-            Assert.That(errorMessage.Text, Is.EqualTo("Cannot navigate to given short URL"));
-            Assert.True(errorMessage.Displayed);
-            Assert.That(errorHeader.Text, Is.EqualTo("Error: Cannot navigate to given short URL"));
-            Assert.True(errorHeader.Displayed);
-            Assert.That(errorText.Text, Is.EqualTo("Invalid short URL code: invalid536524"));
-            Assert.True(errorText.Displayed);
+            var url = "http://shorturl.nakov.repl.co/go/invalid536524";
+            driver.Navigate().GoToUrl(url);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var error = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div.err")));
+            Assert.True(error.Displayed);
+            Assert.That(error.Text, Is.EqualTo("Cannot navigate to given short URL"));
         }
 
         [Test, Order(5)]
-        public void OpenShortURLPage_Test_Counter()
+        public void Test_HomePageCounter()
         {
-            int countBefore = getURLCounter() + 1;
-            addNewURL("https://softuni.bg");
-            int countAfter = getURLCounter();
-            Assert.That(countBefore, Is.EqualTo(countAfter));
+            driver.Navigate().GoToUrl(ShortUrl);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            var counterBefore = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("table > tbody > tr:last-child > td:last-child")));
+            var oldCounter = int.Parse(counterBefore.Text);
+            var lastAddedUrlVisitorsLink = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("table > tbody > tr:last-child > td:nth-child(2) > a")));          
+            lastAddedUrlVisitorsLink.Click();
+            driver.SwitchTo().Window(driver.WindowHandles[0]);
+            driver.Navigate().GoToUrl(ShortUrl);
+            var counterAfter = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("table > tbody > tr:last-child > td:last-child")));
+            var newCounter = int.Parse(counterAfter.Text);
+            Assert.That(oldCounter+1, Is.EqualTo(newCounter));
         }
     }
 }
